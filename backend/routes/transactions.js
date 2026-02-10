@@ -35,3 +35,22 @@ router.post('/', async(req, res) => {
         res.status(500).json({message: 'Server error', error: e.message});
     }
 });
+
+router.put('/:id', async (req, res) => {
+    try {
+        const {id} = req.params;
+        const {type, amount, category, description, date} = req.body;
+
+        const result = await pool.query(
+            'UPDATE transactions SET type = $1, amount = $2, category = $3, description = $4, date = $5 WHERE id = $6 AND user_id = $7 RETURNING *',
+            [type, amount, category, description, date, id, req.user.userId]
+        );
+
+        if(result.rows.length === 0) {
+            return res.status(404).json({message: 'Transaction not found'});
+        }
+        res.json(result.rows[0]);
+    } catch(e) {
+        res.status(500).json({message: 'Server error', error: e.message});
+    }
+});
