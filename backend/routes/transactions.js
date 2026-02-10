@@ -7,11 +7,31 @@ router.use(authenticateToken);
 
 router.get('/', async (req, res) => {
     try {
-        const result = await pool.query(
-            'SELECT * FROM transactions WHERE user_id = $1 ORDER BY date DESC',
-            [req.user.userId]
-        );
+        const {category,startDate, endDate} = req.query;
+        let query = 'SELECT * FROM transactions WHERE user_id = $1';
+        const params = [req.user.userId];
+        let paramIndex = 2;
+
+        if(category) {
+            query += ` AND category = $${paramIndex}`;
+            params.push(category);
+            paramIndex++;
+        }
+        if(startDate) {
+            query += ` AND date >= $${paramIndex}`;
+            params.push(startDate);
+            paramIndex++;
+        }
+        if(endDate) {
+            query += ` AND date <= $${paramIndex}`;
+            params.push(endDate);
+            paramIndex++;
+        }
+        query += ' ORDER BY date DESC';
+
+        const result = await pool.query(query, params);
         res.json(result.rows);
+        
     } catch (e) {
         res.status(500).json({message: 'Server error', error: e.message});
     }
