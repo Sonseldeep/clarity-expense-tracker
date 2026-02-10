@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         let paramIndex = 2;
 
         if(category) {
-            query += ` AND category = $${paramIndex}`;
+            query += ` AND LOWER(category) = LOWER($${paramIndex})`;
             params.push(category);
             paramIndex++;
         }
