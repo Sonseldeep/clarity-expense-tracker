@@ -22,7 +22,7 @@ async function initDatabase() {
             id SERIAL PRIMARY KEY,
             user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
             type VARCHAR(50) NOT NULL, -- 'income' or 'expense'
-            amoutn DECIMAL(10, 2) NOT NULL,
+            amount   DECIMAL(10, 2) NOT NULL,
             category VARCHAR(50) NOT NULL,
             description TEXT,
             date DATE NOT NULL,
