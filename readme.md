@@ -6,6 +6,12 @@ A full-stack personal finance management application that helps users track thei
 
 Clarity is a modern web application designed for managing personal transactions. Users can register, log in, and maintain a detailed record of their financial activities with categorized income and expense tracking.
 
+## Deployement Platform
+ - **Frontend** - Vercel
+ - **Database** - Railway
+ - **Backend** - Railway
+  
+
 ## 🚀 Tech Stack
 
 ### Frontend
