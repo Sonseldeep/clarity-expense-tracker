@@ -94,7 +94,7 @@ export const NotFoundPage: React.FC = () => {
             {[...Array(5)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-bounce"
+                className="w-2 h-2 bg-linear-to-r from-blue-600 to-purple-600 rounded-full animate-bounce"
                 style={{ animationDelay: `${i * 0.1}s` }}
               />
             ))}
