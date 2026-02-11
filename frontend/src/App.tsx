@@ -28,11 +28,11 @@ function AppContent() {
     <Routes>
       <Route
         path="/login"
-        element={token ? <Navigate to="/dashboard" /> : <LoginPage />}
+        element={!token ? <LoginPage /> : <Navigate to="/dashboard" replace />}
       />
       <Route
         path="/signup"
-        element={token ? <Navigate to="/dashboard" /> : <SignupPage />}
+        element={!token ? <SignupPage /> : <Navigate to="/dashboard" replace />}
       />
       <Route
         path="/dashboard"
@@ -42,11 +42,17 @@ function AppContent() {
           </ProtectedRoute>
         }
       />
-      <Route path="/" element={<Navigate to="/dashboard" />} />
+    
+      <Route
+        path="/"
+        element={<Navigate to={token ? "/dashboard" : "/login"} replace />}
+      />
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
+
 
 function App() {
   return (

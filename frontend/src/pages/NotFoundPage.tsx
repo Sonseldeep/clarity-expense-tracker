@@ -13,11 +13,11 @@ export const NotFoundPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-4 transition-colors duration-300">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-4 transition-colors duration-300">
       <div className="max-w-2xl w-full text-center">
-        {/* Animated 404 */}
+     
         <div className="mb-8 animate-fade-in">
-          <h1 className="text-9xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 animate-pulse">
+          <h1 className="text-9xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 animate-pulse">
             404
           </h1>
           <div className="relative">
